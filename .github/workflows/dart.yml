@@ -10,6 +10,7 @@ on:
 
 jobs:
   build:
+    name: Checkout no código
     runs-on: ubuntu-latest 
     steps:
       - name:  Checkout no código 
@@ -24,3 +25,11 @@ jobs:
         uses: actions/setup-java@v1
         with:
           java-version: "12.x"
+
+  install_flutter:
+      name: Instalado Flutter
+      runs-on: ubuntu-latest
+      steps:
+      - uses: subosito/flutter-action@v1
+        with:
+          flutter-version: '3.10.6'
