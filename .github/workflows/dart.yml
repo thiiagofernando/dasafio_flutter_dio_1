@@ -4,9 +4,13 @@ on:
   push:
     branches:
       - master
+  pull_request:
+    branches:
+      - master
 
 jobs:
   build:
+    name: Gerando APK Android
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
@@ -15,9 +19,13 @@ jobs:
           java-version: '12.x'
       - uses: subosito/flutter-action@v1
         with:
-          channel: 'beta'
+          channel: 'stable'
       - run: flutter clean
       - run: flutter pub get
+      - run: flutter analyze
+      - run: cd android
+      - run: .\gradlew clean
+      - run: cd ..
       - run: flutter build apk
       - uses: actions/upload-artifact@v1
         with:
