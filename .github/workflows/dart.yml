@@ -27,4 +27,4 @@ jobs:
       - uses: actions/upload-artifact@v1
         with:
           name: release-apk
-          path: lib/app-release.apk
+          path: ./app-release.apk
