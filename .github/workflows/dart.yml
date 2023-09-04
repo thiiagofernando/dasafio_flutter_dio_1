@@ -34,3 +34,20 @@ jobs:
       - uses: subosito/flutter-action@v1
         with:
           flutter-version: '3.10.6'
+  
+  restore_pacages:
+      name: Restaurando Pacotes e Analyze
+      runs-on: ubuntu-latest
+      needs: install_flutter
+      steps:
+      - run: flutter clean
+      - run: flutter pub get
+      - run: flutter analyze
+      
+  build_android:
+     name: Build Android APK
+     runs-on: ubuntu-latest
+     needs: restore_pacages
+     steps:
+     - run: flutter build apk --release
+  
