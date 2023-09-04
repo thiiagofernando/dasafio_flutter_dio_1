@@ -10,36 +10,32 @@ on:
 
 jobs:
   build:
-    name: Checkout no código
-    runs-on: ubuntu-latest
+    name:  Checkout no código 
+    runs-on: ubuntu-latest 
     steps:
-      - name: Checkout no código
-        uses: actions/checkout@v2
+      - uses: actions/checkout@v2
 
   install_java:
-    name: Configurando Java
-    runs-on: ubuntu-latest
-    steps:
-      - name: Configurando Java
-        uses: actions/setup-java@v1
+      name: Configurando Java
+      runs-on: ubuntu-latest
+      steps:
+      - uses: actions/setup-java@v1
         with:
           java-version: "12.x"
-		  
+	  
   install_flutter:
     name: Instalando Flutter
     runs-on: ubuntu-latest
     steps:
-      - name: Instalando Flutter versão 3.10.6
-        uses: subosito/flutter-action@v1
-        with:
-          flutter-version: '3.10.6'
+     - uses: subosito/flutter-action@v1
+       with:
+         flutter-version: '3.10.6'
 		  
   restore_pacages:
     name: Restaurando Pacotes e Analyze
     runs-on: ubuntu-latest
     steps:
-      - name: Restaurando Pacotes
-        run: |
+      - run: |
              flutter clean
              flutter pub get
              flutter analyze
@@ -48,15 +44,13 @@ jobs:
     name: Build Android APK
     runs-on: ubuntu-latest
     steps:
-      - name: Build Android APK
-        run: flutter build apk --release		  
+      - run: flutter build apk --release		  
 		  
   android_artefacts:
     name: Publish Android Artefacts
     runs-on: ubuntu-latest
     steps:
-      - name: Publish Android Artefacts
-        uses: actions/upload-artifact@v1
+      - uses: actions/upload-artifact@v1
         with:
-          name: release-apk-
+          name: APK Release Mode
           path: build/app/outputs/apk/release/app-release.apk
