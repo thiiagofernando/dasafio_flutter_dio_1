@@ -10,15 +10,15 @@ on:
 
 jobs:
   build:
-    name:  Checkout no código 
     runs-on: ubuntu-latest 
     steps:
-      - uses: actions/checkout@v2
+      - name:  Checkout no código 
+        uses: actions/checkout@v2
 
   install_java:
-      name: Configurando Java
       runs-on: ubuntu-latest
       steps:
-      - uses: actions/setup-java@v1
+      - name: Configurando Java
+        uses: actions/setup-java@v1
         with:
           java-version: "12.x"
