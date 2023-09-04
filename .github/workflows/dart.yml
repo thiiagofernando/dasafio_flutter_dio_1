@@ -23,7 +23,9 @@ jobs:
       - run: flutter clean
       - run: flutter pub get
       - run: flutter analyze
-      - run: flutter build apk --release  --target lib/main.dart
+      - name: 🔧 Build APK
+      - run: flutter build apk --release -v --target lib/main.dart
+      - name: 📦 Upload apk artifact
       - uses: actions/upload-artifact@v1
         with:
           name: release-apk
