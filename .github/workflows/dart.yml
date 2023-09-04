@@ -24,6 +24,9 @@ jobs:
       - run: flutter pub get
       - run: flutter analyze
       - run: cd android
+      - run: chmod +x ./gradlew
+      - run: gradle wrapper
+      - run: chmod +x ./gradlew
       - run: ./gradlew clean
       - run: cd ..
       - run: flutter build apk
